@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memory", "Memory\Memory.csproj", "{2DC347C6-2286-4BEA-8E17-15BF50FE005D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAcces", "DataAcces\DataAcces.csproj", "{166D795D-7532-449B-995D-2126C1B6555E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD001AA4-40A9-4EDE-91BC-E3C05FB4148B}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryCore", "MemoryCore\MemoryCore.csproj", "{BBD1EA42-C963-4DED-9D17-DC35CB049731}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryConsole", "MemoryConsole\MemoryConsole.csproj", "{3589869A-5ABB-4D96-A50A-9D80B44EB100}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DC347C6-2286-4BEA-8E17-15BF50FE005D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DC347C6-2286-4BEA-8E17-15BF50FE005D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DC347C6-2286-4BEA-8E17-15BF50FE005D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DC347C6-2286-4BEA-8E17-15BF50FE005D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{166D795D-7532-449B-995D-2126C1B6555E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{166D795D-7532-449B-995D-2126C1B6555E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{166D795D-7532-449B-995D-2126C1B6555E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{166D795D-7532-449B-995D-2126C1B6555E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD1EA42-C963-4DED-9D17-DC35CB049731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD1EA42-C963-4DED-9D17-DC35CB049731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD1EA42-C963-4DED-9D17-DC35CB049731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD1EA42-C963-4DED-9D17-DC35CB049731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3589869A-5ABB-4D96-A50A-9D80B44EB100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3589869A-5ABB-4D96-A50A-9D80B44EB100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3589869A-5ABB-4D96-A50A-9D80B44EB100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3589869A-5ABB-4D96-A50A-9D80B44EB100}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
