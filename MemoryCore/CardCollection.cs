@@ -54,4 +54,9 @@ public class CardCollection
         
         throw new Exception("Card not found");// todo make custom exception;
     }
+    
+    public Card GetCardByIndex(int index)
+    {
+        return _cards[index];
+    }
 }
