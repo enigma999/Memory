@@ -1,4 +1,6 @@
-﻿namespace MemoryCore;
+﻿using MemoryCore.Exceptions;
+
+namespace MemoryCore;
 
 public class MemoryCore
 {
@@ -37,7 +39,7 @@ public class MemoryCore
             return _state;
         }
 
-        public string FlipCard(char[] state, string input)
+        public string FlipCard(char[] state, string? input)
         {
             string message;
             try
@@ -48,7 +50,7 @@ public class MemoryCore
                 _state = state;
                 message = "you fliped card " + cardCharacter;
             }
-            catch (Exception e)
+            catch (InvalidCardChoiceException e)
             {
                 message = e.Message;
             }
@@ -58,15 +60,15 @@ public class MemoryCore
 
         public char CleanImput(string input)
         {
-            if (input.Length > 1 || input.Length == 0)
+            if (input.Length != 1)
             {
-                throw new Exception("only a single character allowed");
+                throw new InvalidCardChoiceException("only a single character allowed");
             }
 
             char cardCharacter = input[0];
-            if (!_state.Contains(cardCharacter))
+            if (!CardCharacters.Contains(cardCharacter))
             {
-                throw new Exception("card doesn't exist, or is already flipped");
+                throw new InvalidCardChoiceException("card doesn't exist, or is already flipped");
             }
 
             return cardCharacter;
