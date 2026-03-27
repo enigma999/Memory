@@ -1,37 +1,37 @@
-﻿using static MemoryCore.MemoryCore;
+﻿using MemoryCore;
+using static MemoryCore.MemoryCore;
 
 MemoryGame game = new MemoryGame();
-
-
-char[] state;
+string fullLine = "####################";
+string patialLine = "#   ##   ##   ##   #";
+int rows = 4;
+int columns = 4;
 string message = "";
-while(true)
+while (true)
 {
-    state = game.GetState();
+    CardCollection cards = game.GetCards();
     Console.Clear();
     Console.WriteLine(message);
-    PrintCardGrid();
+    PrintCardGrid(cards.GetUpperFaces());
     Console.WriteLine("choose a card to flip");
-    message = game.FlipCard(state,Console.ReadLine());
+    message = game.FlipCard(Console.ReadLine());
 }
 
-void PrintCardGrid()
+void PrintCardGrid(List<char> faces)
 {
-    Console.WriteLine("####################");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("# " + state[0] + " ## " + state[1] + " ## " + state[2] + " ## " + state[3] + " #");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("####################");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("# " + state[4] + " ## " + state[5] + " ## " + state[6] + " ## " + state[7] + " #");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("####################");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("# " + state[8] + " ## " + state[9] + " ## " + state[10] + " ## " + state[11] + " #");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("####################");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("# " + state[12] + " ## " + state[13] + " ## " + state[14] + " ## " + state[15] + " #");
-    Console.WriteLine("#   ##   ##   ##   #");
-    Console.WriteLine("####################");
+    int cardIndex = 0;
+    for (int row = 0; row < rows; row++)
+    {
+        Console.WriteLine(fullLine);
+        Console.WriteLine(patialLine);
+        for (int column = 0; column < columns; column++)
+        {
+            Console.Write("# " + faces[cardIndex] + " #");
+            cardIndex++;
+        }
+        Console.WriteLine();
+        Console.WriteLine(patialLine);
+    }
+
+    Console.WriteLine(fullLine);
 }
