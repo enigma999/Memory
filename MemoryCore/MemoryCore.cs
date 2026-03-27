@@ -50,16 +50,17 @@ public class MemoryCore
                 else if (_secondchoice == null)
                 {
                     _secondchoice = chosenCard;
-                }
-                else
-                {
                     if (_firstChoice.Value == _secondchoice.Value)
                     {
                         _firstChoice.FoundPair = true;
                         _secondchoice.FoundPair = true;
                         message += " match found!!!";
                     }
-                    else
+                }
+                else
+                {
+
+                    if (_firstChoice.Value != _secondchoice.Value)
                     {
                         _firstChoice.Flip();
                         _secondchoice.Flip();
@@ -90,9 +91,14 @@ public class MemoryCore
                 throw new InvalidCardChoiceException("card doesn't exist");
             }
             Card chosenCard = _cards.GetCard(cardCharacter);
-            if (chosenCard.Open)
+            if (chosenCard.FoundPair)
             {
-                throw new InvalidCardChoiceException("Card Already flipped");
+                throw new InvalidCardChoiceException("Already found pair");
+            }
+
+            if (chosenCard == _firstChoice)
+            {
+                throw new InvalidCardChoiceException("Can not pick the same card twice");
             }
             return chosenCard;
         }
