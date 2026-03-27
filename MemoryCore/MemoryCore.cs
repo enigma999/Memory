@@ -54,7 +54,15 @@ public class MemoryCore
                 }
                 else
                 {
-                    if (_firstChoice == _secondchoice)
+                    if (_firstChoice.Value == _secondchoice.Value)
+                    {
+                        _firstChoice.Open = true;
+                        _firstChoice.FoundPair = true;
+                        _secondchoice.Open = true;
+                        _secondchoice.FoundPair = true;
+                        message += " match found!!!";
+                    }
+                    else
                     {
                         _firstChoice.Open = false;
                         _secondchoice.Open = false;
@@ -67,9 +75,7 @@ public class MemoryCore
             {
                 message = e.Message;
             }
-
-            message += "chosen card one: " + _firstChoice + " ";
-            message += "chosen card two: " + _secondchoice + " ";
+            
             return message;
         }
 
