@@ -104,7 +104,7 @@ public class MemoryCore
                 throw new InvalidCardChoiceException("Already found pair");
             }
 
-            if (chosenCard == _firstChoice)
+            if (chosenCard == _firstChoice && _secondchoice == null)
             {
                 throw new InvalidCardChoiceException("Can not pick the same card twice");
             }
