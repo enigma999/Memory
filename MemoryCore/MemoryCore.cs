@@ -4,43 +4,72 @@ public class MemoryCore
 {
     public class MemoryGame
     {
-        private Dictionary<char, char> cards;
-        private char[] state;
+        private Dictionary<char, char> _cards;
+        private char[] _state;
+        private int _firstchoice;
+        private int _secondchoice;
+
+        private static readonly char[] CardCharacters =
+            ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
 
         public MemoryGame()
         {
-            this.state = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
+            _cards = SetupCards();
+            _state = CardCharacters;
+            SetupCards();
+        }
 
-            char[] cardValues = { '1', '2', '3', '4', '5', '1', '2', '3', '4', '5', '6', '7', '6', '7', '8', '8' };
+        private Dictionary<char, char> SetupCards()
+        {
+            char[] cardValues = ['1', '2', '3', '4', '5', '1', '2', '3', '4', '5', '6', '7', '6', '7', '8', '8'];
 
-            this.cards = new Dictionary<char, char>();
+            Dictionary<char, char> cards = new Dictionary<char, char>();
             for (int i = 0; i < cardValues.Length; i++)
             {
-               this.cards.Add((char)(97 + i), cardValues[i]);
+                cards.Add((char)(97 + i), cardValues[i]);
             }
+
+            return cards;
         }
 
         public char[] GetState()
         {
-            return state;
+            return _state;
         }
 
         public string FlipCard(char[] state, string input)
         {
-            if (input.Length > 1 || input.Length == 0)
+            string message;
+            try
             {
-                return "only a single character allowed";
+                char cardCharacter = CleanImput(input);
+                int index = Array.IndexOf(state, cardCharacter);
+                state[index] = _cards[cardCharacter];
+                _state = state;
+                message = "you fliped card " + cardCharacter;
             }
-            char cardCharacter = input[0];
-            if (!state.Contains(cardCharacter))
+            catch (Exception e)
             {
-                return "card doesn't exist, or is already flipped";
+                message = e.Message;
             }
 
-            int index = Array.IndexOf(state, cardCharacter);
-            state[index] = cards[cardCharacter];
-            this.state = state;
-            return "you fliped card " + cardCharacter;
+            return message;
+        }
+
+        public char CleanImput(string input)
+        {
+            if (input.Length > 1 || input.Length == 0)
+            {
+                throw new Exception("only a single character allowed");
+            }
+
+            char cardCharacter = input[0];
+            if (!_state.Contains(cardCharacter))
+            {
+                throw new Exception("card doesn't exist, or is already flipped");
+            }
+
+            return cardCharacter;
         }
     }
 }
