@@ -55,6 +55,15 @@ public class MemoryCore
                         _firstChoice.FoundPair = true;
                         _secondchoice.FoundPair = true;
                         message += " match found!!!";
+                        _cards.PairsFound++;
+                        if (_cards.TotalPairs == _cards.PairsFound)
+                        {
+                            message += " all cards found!!!";
+                        }
+                    }
+                    else
+                    {
+                        message += " no match";
                     }
                 }
                 else
@@ -67,7 +76,6 @@ public class MemoryCore
                     }
                     _firstChoice = chosenCard;
                     _secondchoice = null;
-                    message += " no match";
                 }
             }
             catch (InvalidCardChoiceException e)

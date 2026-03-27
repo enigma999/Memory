@@ -12,6 +12,8 @@ while (true)
     CardCollection cards = game.GetCards();
     Console.Clear();
     Console.WriteLine(message);
+    Console.WriteLine(cards.PairsFound + "/" + cards.TotalPairs + " pairs found");
+    Console.WriteLine();
     PrintCardGrid(cards);
     Console.WriteLine("choose a card to flip");
     message = game.FlipCard(Console.ReadLine());
@@ -62,10 +64,12 @@ void PrintCardFace(Card card)
     {
         Console.ForegroundColor = ConsoleColor.Green;
     }
+
     if (card.Open && !card.FoundPair)
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
     }
+
     Console.Write(face);
     Console.ResetColor();
 }

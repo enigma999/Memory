@@ -3,6 +3,11 @@ namespace MemoryCore;
 public class CardCollection
 {
     private List<Card> _cards;
+    private int _pairsFound = 0;
+    public int Count => _cards.Count;
+    public int PairsFound { get; set; }
+    public int TotalPairs => Count / 2;
+    
 
     public CardCollection()
     {
