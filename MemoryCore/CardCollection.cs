@@ -13,18 +13,6 @@ public class CardCollection
         _cards.Add(card);
     }
 
-    public void FlipCard(char character)
-    {
-        foreach (Card card in _cards)
-        {
-            if (card.Name == character)
-            {
-                card.Open = true;
-                break;
-            }
-        }
-    }
-
     public List<char> GetUpperFaces()
     {
         List<char> faceList = new List<char>();

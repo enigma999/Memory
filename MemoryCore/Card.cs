@@ -15,4 +15,9 @@ public class Card
         Name = name;
         Value = value;
     }
+
+    public void Flip()
+    {
+        Open = !Open;
+    }
 }

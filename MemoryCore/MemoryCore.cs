@@ -40,10 +40,9 @@ public class MemoryCore
             string message;
             try
             {
-                char cardCharacter = CleanInput(input);
-                _cards.FlipCard(cardCharacter);
-                Card chosenCard = _cards.GetCard(cardCharacter);
-                message = "you fliped card " + cardCharacter + ". ";
+                Card chosenCard = CleanInput(input);
+                chosenCard.Flip();
+                message = "you fliped card " + chosenCard.Name + ". ";
                 if (_firstChoice == null)
                 {
                     _firstChoice = chosenCard;
@@ -56,19 +55,18 @@ public class MemoryCore
                 {
                     if (_firstChoice.Value == _secondchoice.Value)
                     {
-                        _firstChoice.Open = true;
                         _firstChoice.FoundPair = true;
-                        _secondchoice.Open = true;
                         _secondchoice.FoundPair = true;
                         message += " match found!!!";
                     }
                     else
                     {
-                        _firstChoice.Open = false;
-                        _secondchoice.Open = false;
+                        _firstChoice.Flip();
+                        _secondchoice.Flip();
                     }
                     _firstChoice = chosenCard;
                     _secondchoice = null;
+                    message += " no match";
                 }
             }
             catch (InvalidCardChoiceException e)
@@ -79,7 +77,7 @@ public class MemoryCore
             return message;
         }
 
-        private char CleanInput(string? input)
+        private Card CleanInput(string? input)
         {
             if (input is not { Length: 1 })
             {
@@ -89,10 +87,14 @@ public class MemoryCore
             char cardCharacter = input[0];
             if (!CardCharacters.Contains(cardCharacter))
             {
-                throw new InvalidCardChoiceException("card doesn't exist, or is already flipped");
+                throw new InvalidCardChoiceException("card doesn't exist");
             }
-
-            return cardCharacter;
+            Card chosenCard = _cards.GetCard(cardCharacter);
+            if (chosenCard.Open)
+            {
+                throw new InvalidCardChoiceException("Card Already flipped");
+            }
+            return chosenCard;
         }
     }
 }
