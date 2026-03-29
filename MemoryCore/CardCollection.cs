@@ -1,3 +1,5 @@
+using MemoryCore.Exceptions;
+
 namespace MemoryCore;
 
 public class CardCollection
@@ -45,7 +47,7 @@ public class CardCollection
             }
         }
         
-        throw new Exception("Card not found");// todo make custom exception;
+        throw new InvalidCardChoiceException("card doesn't exist. card: " + character);
     }
     
     public Card GetCardByIndex(int index)
