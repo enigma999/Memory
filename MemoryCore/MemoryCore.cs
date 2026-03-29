@@ -11,9 +11,7 @@ public class MemoryCore
         private Card? _secondchoice;
         private static readonly char StartingCharacter = 'a';
         private static readonly int CardCount = 16;
-
-        private static readonly char[] CardValues =
-            ['1', '2', '3', '4', '5', '1', '2', '3', '4', '5', '6', '7', '6', '7', '8', '8'];
+        private static readonly Random Random = new Random();
 
         public MemoryGame()
         {
@@ -24,10 +22,43 @@ public class MemoryCore
         {
             _cards = new CardCollection();
             char Character = StartingCharacter;
+            char[] cardValues = GenerateCardValues(CardCount);
+            Shuffle(cardValues);
             for (int i = 0; i < CardCount; i++)
             {
-                _cards.AddCard(new Card(Character, CardValues[i]));
+                
+                _cards.AddCard(new Card(Character, cardValues[i]));
                 Character++;
+            }
+        }
+        
+        private char[] GenerateCardValues(int cardCount)
+        {
+            if (cardCount % 2 != 0 && cardCount < 20)
+                throw new ArgumentException("Card count must be even and produce no more than 10 pairs.");
+
+            char[] values = new char[cardCount];
+
+            int pairCount = cardCount / 2;
+            char current = '0';
+
+            int index = 0;
+            for (int i = 0; i < pairCount; i++)
+            {
+                values[index++] = current;
+                values[index++] = current;
+                current++;
+            }
+
+            return values;
+        }
+        
+        private void Shuffle(char[] array)
+        {
+            for (int i = array.Length - 1; i > 0; i--)
+            {
+                int j = Random.Next(i + 1);
+                (array[i], array[j]) = (array[j], array[i]);
             }
         }
 
