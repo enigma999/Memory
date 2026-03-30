@@ -1,4 +1,5 @@
-﻿using MemoryCore;
+﻿using DataAcces;
+using MemoryCore;
 using static MemoryCore.MemoryCore;
 
 MemoryGame game = new MemoryGame();
@@ -7,6 +8,8 @@ string patialLine = "#   # #   # #   # #   # ";
 int rows = 4;
 int columns = 4;
 string message = "";
+Database database = new Database();
+database.Initialize();
 while (true)
 {
     CardCollection cards = game.GetCards();

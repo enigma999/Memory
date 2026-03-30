@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MemoryCore\MemoryCore.csproj" />
+      <ProjectReference Include="..\MemoryDataAcces\MemoryDataAcces.csproj" />
     </ItemGroup>
 
 </Project>
